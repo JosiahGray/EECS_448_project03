@@ -1,0 +1,27 @@
+Name: Main control interface
+Descr: main window that allows user to choose a game.
+Time: few hours
+
+Name: Minigame1
+Descr: arrow dodging game, 1-player game, player dodges arrows as they fall from the top of the screen.
+Time: few days
+
+Name: Minigame2
+Descr: pong game, 2-player game between player and computer, a each player guards a goal at opposite ends of the screen, points are scored when a ball enters the opponent's goal.
+Time: few days
+
+Name: Minigame3
+Descr: nim game, a 2-player game between player and computer, players take turns removing stones from a pile, whoever takes the last stone loses.
+Time: 1-2 days
+
+Name: enhance visuals/graphics
+Descr: improve visuals with better pictures.
+Time: few days to 1 week
+
+Name: Multiple difficulties/better AI
+Descr: add multiple difficulty levels for each minigame.
+Time: few days
+
+Name: Change program icon
+Descr: change the program icon in the top left corner of the window.
+Time: less than 1 hour
