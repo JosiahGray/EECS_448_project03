@@ -19,19 +19,17 @@ public class PongHuman {
 	//draw function
 	public void paintComponent(Graphics g){
 		g.setColor(Color.GREEN);
-		g.drawRect(x, y, width, height);
-		g.fillRect(x, y, width, height);
-				
+		//g.drawRect(x, y, width, height);
+		g.fillRect(x, y, width, height);		
 	}
 	//move function
 	public void move(Boolean up){
-		System.out.println("hello friend");
 		int updatey;
 		if(up){
-			updatey = -4;
+			updatey = -5;
 			
 		} else{
-			updatey = 4;
+			updatey = 5;
 		}
 		y += updatey;
 		if(y<0){
