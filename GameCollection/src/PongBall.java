@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class PongBall {
@@ -6,17 +7,17 @@ public class PongBall {
 	int xSpeed;
 	int ySpeed;
 	//constructor
-	public PongBall(){
+	public PongBall(PongGame game){
 		x = 300;
 		y = 200;
 		xSpeed = -3;
-		ySpeed = 0;
-		
-		
+		ySpeed = 0;	
 	}
 	//draw
-	//add spots function?
-	//reset ball function
+	public void paintComponent(Graphics g){
+		g.setColor(Color.WHITE);
+		g.fillOval(x, y, 7, 7);
+	}
 	//move function
 	public void move(PongHuman human, PongComputer computer){
 		x+= xSpeed;
@@ -33,6 +34,7 @@ public class PongBall {
 			}
 			ySpeed = 0; //stop ball
 			//delay for celebration
+			reset();
 		}
 		//ball hits wall
 		//top wall

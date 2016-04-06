@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
 //All AI logic
 public class PongComputer {
 	int x;
@@ -7,7 +10,7 @@ public class PongComputer {
 	int xSpeed;
 	int ySpeed;
 	//constructor
-	public PongComputer(){
+	public PongComputer(PongGame game){
 		x = 575;
 		y = 0;
 		width = 10;
@@ -17,6 +20,12 @@ public class PongComputer {
 		
 	}
 	//draw
+	public void paintComponent(Graphics g){
+		g.setColor(Color.GREEN);
+		g.drawRect(x, y, width, height);
+		g.fillRect(x, y, width, height);
+		
+	}
 	//move
 	public void move(PongBall ball){
 		int yPosition = ball.y;

@@ -1,24 +1,23 @@
 //Where all logic will take place
-import java.util.Timer;
+import java.awt.Graphics;
 import java.util.TimerTask;
 public class PongGame extends TimerTask {
 	//constructor
-	PongDisplay background;
 	PongHuman human;
 	PongComputer computer;
 	PongBall ball;
+	Graphics g;
+	PongControl control;
 	public PongGame(){
-		background = new PongDisplay();
 		human = new PongHuman();
-		computer = new PongComputer();
-		ball = new PongBall();
+		computer = new PongComputer(this);
+		ball = new PongBall(this);
+		control = new PongControl(this);
 	}
+	//step function
 	public void run(){
-		//where things will update
-		human.move();
-		computer.move(ball);
-		//clear background graphics (take over to pong display)
-		//draw everything...
+		control.run(this);
+		
 	}
 
 }
