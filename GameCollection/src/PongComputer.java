@@ -16,15 +16,13 @@ public class PongComputer {
 		width = 10;
 		height = 50;
 		xSpeed = 3;
-		ySpeed = 0;
-		
+		ySpeed = 0;		
 	}
 	//draw
 	public void paintComponent(Graphics g){
 		g.setColor(Color.GREEN);
-		g.drawRect(x, y, width, height);
-		g.fillRect(x, y, width, height);
-		
+		//g.drawRect(x, y, width, height);
+		g.fillRect(x, y, width, height);	
 	}
 	//move
 	public void move(PongBall ball){

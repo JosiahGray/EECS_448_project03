@@ -4,11 +4,14 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Component;
+
 import javax.swing.*;
+
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 public class PongControl extends JFrame implements KeyListener{
 	//https://docs.oracle.com/javase/tutorial/uiswing/events/keylistener.html
 	JPanel content;
@@ -49,31 +52,30 @@ public class PongControl extends JFrame implements KeyListener{
 		return (this);
 	}
 	public void update(){
-		//human.move();
 		computer.move(ball);
 		ball.move(human, computer);
 	}
 	public void paintComponent(Graphics g){
+		//http://stackoverflow.com/questions/8980185/how-to-reduce-lag-in-my-java-2d-platformer
 		super.paintComponents(g);
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 600, 400);
 		ball.paintComponent(g);
 		human.paintComponent(g);
 		computer.paintComponent(g);
+		Toolkit.getDefaultToolkit().sync();
 	}
 	public void keyPressed(KeyEvent e){
 		//get key codes
 		char id = e.getKeyChar();
-		System.out.println(id + "<-- id");
 		if(id == '8'){
-			System.out.println("hello!!!");
 			human.move(true);
 		} else if(id == '2'){
 			human.move(false);
 		}
 	}
 	public void keyReleased(KeyEvent e){
-		
+		;
 	}
 	public void keyTyped(KeyEvent e){
 		;
@@ -82,7 +84,7 @@ public class PongControl extends JFrame implements KeyListener{
 		update();
 		removeAll();
 		revalidate();
-		paintComponent(super.getGraphics());
+		this.paintComponent(super.getGraphics());
 	}
 
 }
