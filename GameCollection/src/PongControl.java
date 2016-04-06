@@ -2,6 +2,8 @@
 //will implement action listener
 //then updates human move, so human doesn't have to do weird action listener stuff
 import java.awt.event.ActionEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -23,7 +25,7 @@ public class PongControl extends JFrame implements KeyListener{
 	PongBall ball;
 	PongHuman human;
 	PongComputer computer;
-	
+	Graphics myGraph;
 	public PongControl(PongGame game){
 		super("PONG!");
 		content = new JPanel();
@@ -32,30 +34,42 @@ public class PongControl extends JFrame implements KeyListener{
 		human = game.human;
 		computer = game.computer;
 		d = new Dimension(600,400);
-		//display = new PongDisplay(game);
+		addKeyListener(this);
 		createAndDisplayGUI();
+		
 		
 	}
 	public void createAndDisplayGUI(){
 		//this.getContentPane().add(display.getContent());
-		this.setLayout(new FlowLayout());
+		this.setLayout(new FlowLayout()); 
 		this.setMinimumSize(d);
-		//this.getContentPane().add(display);
+		this.setMaximumSize(d);
+		content.setOpaque(true);
+		this.setContentPane(content);
 		this.getContentPane().setBackground(Color.BLACK);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
+		setFocusable(true);
 		this.setVisible(true);
 	}
+	public Dimension getPreferredSize(){
+		return new Dimension(600, 400);
+	}
 	public Component getContent(){
-		return (content);
+		return (this);
 	}
 	public void update(){
 		human.move();
+		computer.move(ball);
 		ball.move(human, computer);
 	}
 	public void paintComponent(Graphics g){
 		super.paintComponents(g);
-		ball.paint(g);
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 600, 400);
+		ball.paintComponent(g);
+		human.paintComponent(g);
+		computer.paintComponent(g);
 	}
 	public void keyPressed(KeyEvent e){
 		//get key codes
@@ -67,7 +81,13 @@ public class PongControl extends JFrame implements KeyListener{
 		
 	}
 	public void keyTyped(KeyEvent e){
-		; 
+		//System.out.println(e);
+	}
+	public void run(PongGame game){
+		update();
+		removeAll();
+		revalidate();
+		paintComponent(super.getGraphics());
 	}
 
 }
