@@ -1,17 +1,10 @@
 //where input will come in
 //will implement action listener
 //then updates human move, so human doesn't have to do weird action listener stuff
-import java.awt.event.ActionEvent;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Component;
-
 import javax.swing.*;
-import javax.swing.*;
-
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -21,7 +14,6 @@ public class PongControl extends JFrame implements KeyListener{
 	JPanel content;
 	PongGame theGame;
 	Dimension d;
-	PongDisplay display;
 	PongBall ball;
 	PongHuman human;
 	PongComputer computer;
@@ -35,9 +27,7 @@ public class PongControl extends JFrame implements KeyListener{
 		computer = game.computer;
 		d = new Dimension(600,400);
 		addKeyListener(this);
-		createAndDisplayGUI();
-		
-		
+		createAndDisplayGUI();	
 	}
 	public void createAndDisplayGUI(){
 		//this.getContentPane().add(display.getContent());
@@ -59,7 +49,7 @@ public class PongControl extends JFrame implements KeyListener{
 		return (this);
 	}
 	public void update(){
-		human.move();
+		//human.move();
 		computer.move(ball);
 		ball.move(human, computer);
 	}
@@ -73,15 +63,20 @@ public class PongControl extends JFrame implements KeyListener{
 	}
 	public void keyPressed(KeyEvent e){
 		//get key codes
-		int id = e.getID();
-		System.out.println(id);
-		
+		char id = e.getKeyChar();
+		System.out.println(id + "<-- id");
+		if(id == '8'){
+			System.out.println("hello!!!");
+			human.move(true);
+		} else if(id == '2'){
+			human.move(false);
+		}
 	}
 	public void keyReleased(KeyEvent e){
 		
 	}
 	public void keyTyped(KeyEvent e){
-		//System.out.println(e);
+		;
 	}
 	public void run(PongGame game){
 		update();
