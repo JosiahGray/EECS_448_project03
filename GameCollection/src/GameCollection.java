@@ -57,6 +57,16 @@ public class GameCollection {
 				/*
 				 * put code to run Nim here
 				 */
+				
+				//set up Nim game
+				JFrame nimFrame = new JFrame("Nim");
+				//nimFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Exit when closed
+				Nim nimGame = new Nim();
+				
+				nimFrame.getContentPane().add(nimGame.getContent());
+				nimFrame.pack();
+				nimFrame.setVisible(true);
+				
 			}
 		};
 		

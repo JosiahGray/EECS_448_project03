@@ -19,9 +19,10 @@ public class Nim
 	private int stones;
 	private boolean gameOver;
 	private boolean isPlayerTurn;
-	private int playerTake;
-	private int compTake;
 	private Random rand;
+	
+	private String nextLastMove;
+	private String lastMove;
 	
 	public Nim()
 	{
@@ -37,18 +38,27 @@ public class Nim
 		return gamePanel;
 	}
 	
-	public void reset()
+	private void reset()
 	{
 		stones = rand.nextInt(5) + 21;
 		gameOver = false;
-		playerTake = 0;
-		compTake = 0;
+		isPlayerTurn = true;
+		
+		nextLastMove = "";
+		lastMove = "";
 		
 		stonesLabel.setText(stoneString(stones));
-		movesLabel.setText("You make the first move.");
+		updateMoves("You make the first move.");
 	}
 	
-	public String stoneString(int n)
+	private void updateMoves(String newMove)
+	{
+		nextLastMove = lastMove;
+		lastMove = newMove;
+		movesLabel.setText("<html>" + nextLastMove + "<br>" + lastMove + "</html>");
+	}
+	
+	private String stoneString(int n)
 	{
 		String display = "Remaining stones: " + n + "<br>";
 		
@@ -64,6 +74,70 @@ public class Nim
 		
 		display = "<html> " + display + " </html>";
 		return display;
+	}
+	
+	private boolean takeStones(int n)
+	{
+		stones = stones - n;
+		
+		//returns a boolean: true ~ game over; false ~ game is still going
+		if(stones <= 0)
+		{
+			//game over
+			stones = 0;
+			
+			//update stone pile
+			stonesLabel.setText(stoneString(stones));
+			return true;
+		}
+		else
+		{
+			//game still going
+			//update stone pile
+			stonesLabel.setText(stoneString(stones));
+			return false;
+		}
+	}
+	
+	private void playerTurn(int stonesTaken)
+	{
+		//only active if game is not over and it's the player's turn
+		if(!gameOver && isPlayerTurn)
+		{
+			//player's turn to take stones
+			gameOver = takeStones(stonesTaken);
+			updateMoves("You took " + stonesTaken + " stones.");
+			//check if player lost this turn
+			if(gameOver)
+			{
+				isPlayerTurn = false;
+				//updateMoves("You took the last stone.");
+				updateMoves("You Lose...");
+			}
+			else
+			{
+				//computer's turn
+				isPlayerTurn = false;
+				
+				//computer takes random number of stones (1-3)
+				int compTake = rand.nextInt(3) + 1;
+				gameOver = takeStones(compTake);
+				updateMoves("The computer took " + compTake + " stones.");
+				
+				//check if computer just lost
+				if(gameOver)
+				{
+					isPlayerTurn = false;
+					//updateMoves("The computer took the last stone.");
+					updateMoves("You Win!");
+				}
+				else
+				{
+					//if computer did not lose this turn, game continues
+					isPlayerTurn = true;
+				}
+			}
+		}
 	}
 	
 	private void setupGame()
@@ -107,7 +181,7 @@ public class Nim
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				playerTurn(1);
 			}
 		};
 		
@@ -120,7 +194,7 @@ public class Nim
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				playerTurn(2);
 			}
 		};
 		
@@ -133,7 +207,7 @@ public class Nim
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				playerTurn(3);
 			}
 		};
 		
