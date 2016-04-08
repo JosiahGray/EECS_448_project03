@@ -21,7 +21,7 @@ public class GameCollection {
 		JMenu menu;
 		JMenuItem menuNim;
 		JMenuItem menuPong;
-		JMenuItem menuMerge;
+		JMenuItem menuShooty;
 
 		//create menu components
 		menuBar = new JMenuBar();
@@ -33,13 +33,13 @@ public class GameCollection {
 		menuPong = new JMenuItem("Pong");
 		menuPong.addActionListener(pongListener());
 
-		menuMerge = new JMenuItem("Merge Conflict");
-		menuMerge.addActionListener(mergeListener());
+		menuShooty = new JMenuItem("Shooty Snake");
+		menuShooty.addActionListener(shootyListener());
 
 		//build menu
 		menu.add(menuNim);
 		menu.add(menuPong);
-		menu.add(menuMerge);
+		menu.add(menuShooty);
 		menuBar.add(menu);
 
 		//create empty components for spacing
@@ -99,15 +99,13 @@ public class GameCollection {
 		return listener;
 	}
 
-	private static ActionListener mergeListener()
+	private static ActionListener shootyListener()
 	{
 		ActionListener listener = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				/*
-				 * put code to run Merge Conflict here
-				 */
+				 ShootySnake shootyGame = new ShootySnake();
 			}
 		};
 
