@@ -63,14 +63,8 @@ public class GameCollection {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				/*
-				 * put code to run Nim here
-				 */
-
 				//set up Nim game
 				JFrame nimFrame = new JFrame("Nim");
-				// nimFrame.setLocationRelativeTo(null);
-				//nimFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Exit when closed
 				Nim nimGame = new Nim();
 
 				nimFrame.getContentPane().add(nimGame.getContent());
@@ -90,9 +84,7 @@ public class GameCollection {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				/*
-				 * put code to run Pong here
-				 */
+				//set up Pong game
 				Pong pongGame = new Pong();
 			}
 		};
@@ -106,7 +98,8 @@ public class GameCollection {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				 ShootySnake shootyGame = new ShootySnake();
+				//set up Shooty Snake game
+				ShootySnake shootyGame = new ShootySnake();
 			}
 		};
 
