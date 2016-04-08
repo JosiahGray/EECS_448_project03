@@ -5,7 +5,7 @@ Descr: main window that allows user to choose a game.
 Time: few hours
 
 Name: Minigame1
-Descr: arrow dodging game, 1-player game, player dodges arrows as they fall from the top of the screen.
+Descr: ball dodging and shooting game, 1-player game, player dodges and shoots balls chained together as they travel around the screen.
 Time: few days
 
 Name: Minigame2
@@ -31,3 +31,11 @@ Time: less than 1 hour
 Name: Improve menu
 Descr: make start-up game menu frame larger and more visually interesting.
 Time: 1 day
+
+Name: Add Sound effects and/or Music
+Descr: Add sound effects to the Games and music.
+Time: 1 day
+
+Name: Improve Game Mechanics
+Descr: Improve game mechanics so that the games are more fleshed out
+Time: 1 day per game
