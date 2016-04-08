@@ -23,16 +23,16 @@ Name: Initialize Game
 Descr: Create methods to initialize a new game
 Time: 2 hours
 
-Name: Create Game Loop Function
-Descr: Create method called by scheduler that will call functions to update the game model and graphics
+Name: Game Loop Function
+Descr: Make a pass of the method called by the scheduler that will call functions to update the game model and graphics.  Make sure it works in a scheduler, it's not a recursive function.
 Time: 30 minutes
 
 Name: Initial updateModel method
-Desr: Create an early pass of the updateModel method that will house the game logic. Balls and Player are already moving so make moveBalls method link all the non-leading balls together in movement.
+Desr: Make an early pass of the updateModel method that will house the game logic. Balls and Player are already moving so make moveBalls method link all the non-leading balls together in movement.
 Time: 2 hours
 
 Name: Initial renderFrame method
-Desr: Create an early pass of the renderFrame method that will take information from the game model and
+Desr: Make an early pass of the renderFrame method that will take information from the game model and
 paints it the JFrame's image.
 Time: 20 minutes
 
