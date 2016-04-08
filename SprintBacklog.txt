@@ -62,6 +62,22 @@ Time: 1 hour
 
 
 ~~~~Minigame2 (pong) tasks~~~~
+Name: Pong window 
+Descr: Set up basic shell window for pong game
+Time: 1 hour
+
+Name: Set up game
+Descr:  Create appropriate classes and function shells for each of the classes
+Time: 1 hour
+
+Name: Game logic
+Descr: Implement Computer AI, ball logic, and human input
+Time: 2 hours
+
+Name: Basic graphics
+Descr: Get basic graphics to show up in program 
+Time: 2 hours 
+
 
 
 ~~~~Minigame3 (nim) tasks~~~~
