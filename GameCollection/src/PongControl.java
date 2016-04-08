@@ -30,17 +30,17 @@ public class PongControl extends JFrame implements KeyListener{
 		computer = game.computer;
 		d = new Dimension(600,400);
 		addKeyListener(this);
-		createAndDisplayGUI();	
+		createAndDisplayGUI();
 	}
 	public void createAndDisplayGUI(){
 		//this.getContentPane().add(display.getContent());
-		this.setLayout(new FlowLayout()); 
+		this.setLayout(new FlowLayout());
 		this.setMinimumSize(d);
 		this.setMaximumSize(d);
 		content.setOpaque(true);
 		this.setContentPane(content);
 		this.getContentPane().setBackground(Color.BLACK);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
 		setFocusable(true);
 		this.setVisible(true);
