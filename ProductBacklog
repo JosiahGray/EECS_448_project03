@@ -1,3 +1,5 @@
+~~~~Tasks~~~~
+
 Name: Main control interface
 Descr: main window that allows user to choose a game.
 Time: few hours
@@ -25,3 +27,7 @@ Time: few days
 Name: Change program icon
 Descr: change the program icon in the top left corner of the window.
 Time: less than 1 hour
+
+Name: Improve menu
+Descr: make start-up game menu frame larger and more visually interesting.
+Time: 1 day

@@ -4,6 +4,11 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.Random;
 
+/**
+ * A class that creates a Nim game.
+ * @author Josiah Gray
+ *
+ */
 public class Nim
 {
 	private JPanel gamePanel;
@@ -24,22 +29,37 @@ public class Nim
 	private String nextLastMove;
 	private String lastMove;
 	
+	/**
+	 * The constructor for the Nim class.
+	 * Sets up the game and starts a new game.
+	 */
 	public Nim()
 	{
 		rand = new Random();
 		
+		//set up game panel
 		setupGame();
 		
+		//start new game
 		reset();
 	}
 	
+	/**
+	 * A method to get the content panel that holds the game.
+	 * @return JPanel component that holds the game
+	 */
 	public Component getContent()
 	{
 		return gamePanel;
 	}
 	
+	/**
+	 * Resets the game, returning all variables to their initial state.
+	 */
 	private void reset()
 	{
+		//set game variables to initial values
+		//(what they should look like at the start of the game)
 		stones = rand.nextInt(5) + 21;
 		gameOver = false;
 		isPlayerTurn = true;
@@ -51,17 +71,36 @@ public class Nim
 		updateMoves("You make the first move.");
 	}
 	
+	/**
+	 * Updates the moves played.
+	 * The last move is moved to the second to last move
+	 * and the last move is set equal to the newMove parameter.
+	 * @param newMove
+	 */
 	private void updateMoves(String newMove)
 	{
+		//set second to last move equal to last move
 		nextLastMove = lastMove;
+		
+		//set last move equal to the newMove parameter
 		lastMove = newMove;
+		
+		//display updated moves
 		movesLabel.setText("<html>" + nextLastMove + "<br>" + lastMove + "</html>");
 	}
 	
+	/**
+	 * Generates and returns a string telling the number of remaining stones
+	 * and an ascii representation of the pile of remaining stones.
+	 * @param n
+	 * @return string representing the number of remaining stones
+	 */
 	private String stoneString(int n)
 	{
+		//add number of remaining stones to display string
 		String display = "Remaining stones: " + n + "<br>";
 		
+		//generate ascii art representing the pile of remaining stones
 		for(int i = 1; i <= n; i++)
 		{
 			display += "@";
@@ -72,10 +111,16 @@ public class Nim
 			}
 		}
 		
+		//add html tags to allow panel to display multiple lines
 		display = "<html> " + display + " </html>";
 		return display;
 	}
 	
+	/**
+	 * Subtracts the number of stones n from the total pile of stones.
+	 * @param n
+	 * @return false if game is over (number of stones == 0), true otherwise
+	 */
 	private boolean takeStones(int n)
 	{
 		stones = stones - n;
@@ -99,6 +144,10 @@ public class Nim
 		}
 	}
 	
+	/**
+	 * Execute player's turn and then follow with the computer's turn if the game is still going.
+	 * @param stonesTaken
+	 */
 	private void playerTurn(int stonesTaken)
 	{
 		//only active if game is not over and it's the player's turn
@@ -140,8 +189,12 @@ public class Nim
 		}
 	}
 	
+	/**
+	 * Sets up the frame the game is played in.
+	 */
 	private void setupGame()
 	{
+		//create and set up GUI components
 		gamePanel = new JPanel(new GridLayout(0,1));
 		buttonPanel = new JPanel(new GridLayout(1,3));
 		
@@ -151,21 +204,23 @@ public class Nim
 				+ "Whoever takes the last stone loses!</html>");
 		stonesLabel = new JLabel("");
 		movesLabel = new JLabel("");
-		
 		button1 = new JButton("1");
 		button2 = new JButton("2");
 		button3 = new JButton("3");
 		newGameButton = new JButton("New Game");
 		
+		//attach listeners to buttons
 		button1.addActionListener(button1Listener());
 		button2.addActionListener(button2Listener());
 		button3.addActionListener(button3Listener());
 		newGameButton.addActionListener(newGame());
 		
+		//add buttons to button panel
 		buttonPanel.add(button1);
 		buttonPanel.add(button2);
 		buttonPanel.add(button3);
 		
+		//add components to game panel
 		gamePanel.add(instrLabel);
 		gamePanel.add(stonesLabel);
 		gamePanel.add(movesLabel);
@@ -173,8 +228,10 @@ public class Nim
 		gamePanel.add(newGameButton);
 	}
 	
-	//set up action listeners
-	/////////////////////////
+	/**
+	 * Sets up the action listener for button1
+	 * @return action listener for button1
+	 */
 	private ActionListener button1Listener()
 	{
 		ActionListener listener = new ActionListener()
@@ -188,6 +245,10 @@ public class Nim
 		return listener;
 	}
 	
+	/**
+	 * Sets up the action listener for button2
+	 * @return action listener for button2
+	 */
 	private ActionListener button2Listener()
 	{
 		ActionListener listener = new ActionListener()
@@ -201,6 +262,10 @@ public class Nim
 		return listener;
 	}
 	
+	/**
+	 * Sets up the action listener for button3
+	 * @return action listener for button3
+	 */
 	private ActionListener button3Listener()
 	{
 		ActionListener listener = new ActionListener()
@@ -214,6 +279,10 @@ public class Nim
 		return listener;
 	}
 	
+	/**
+	 * Sets up the action listener for new game button
+	 * @return action listener for new game button
+	 */
 	private ActionListener newGame()
 	{
 		ActionListener listener = new ActionListener()

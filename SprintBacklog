@@ -1,10 +1,34 @@
-Main control interface:
+~~~~Main control interface tasks~~~~
+
+Name: Frame and menu
+Descr: set up a frame and a menu with the names of the games as items
+Time: 1 hour
+
+Name: Link menu to games
+Descr: set up functions to launch games when corresponding menu items are clicked
+Time: 1 hour
 
 
-Minigame1 (dodging arrows):
+~~~~Minigame1 (dodging arrows) tasks~~~~
 
 
-Minigame2 (pong):
+~~~~Minigame2 (pong) tasks~~~~
 
 
-Minigame3 (nim):
+~~~~Minigame3 (nim) tasks~~~~
+
+Name: Nim window
+Descr: set up a frame with necessary labels and buttons
+Time: 1 hour
+
+Name: Setup game
+Descr: set up initial game state (initial state of variables, also make a reset function)
+Time: 1 hour
+
+Name: Game logic
+Descr: program game logic for player turn, computer turn, updating game state, win/lose states
+Time: 1-2 hours
+
+Name: Link to menu
+Descr: integrate game with game collection menu to launch game when menu item is clicked
+Time: < 1 hour
