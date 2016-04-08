@@ -9,7 +9,56 @@ Descr: set up functions to launch games when corresponding menu items are clicke
 Time: 1 hour
 
 
-~~~~Minigame1 (dodging arrows) tasks~~~~
+~~~~Minigame1 (shooty snake) tasks~~~~
+
+Name: Shooty Snake window
+Descr: Set up a JFrame to hold graphics for game
+Time: 1 hour
+
+Name: Scheduler
+Descr: Make Shooty Snake run through a scheduler usign the Timer class
+Time: 15 minutes
+
+Name: Initialize Game
+Descr: Create methods to initialize a new game
+Time: 2 hours
+
+Name: Game Loop Function
+Descr: Make a pass of the method called by the scheduler that will call functions to update the game model and graphics.  Make sure it works in a scheduler, it's not a recursive function.
+Time: 30 minutes
+
+Name: Initial updateModel method
+Desr: Make an early pass of the updateModel method that will house the game logic. Balls and Player are already moving so make moveBalls method link all the non-leading balls together in movement.
+Time: 2 hours
+
+Name: Initial renderFrame method
+Desr: Make an early pass of the renderFrame method that will take information from the game model and
+paints it the JFrame's image.
+Time: 20 minutes
+
+Name: Advanced game logic
+Descr: Allow balls to follow leaders more loosely; add disabled flag to Ball class; when the ball in front of another ball is disabled, the following ball will no longer follow it, creating multiple snakes over time.
+Time: 2 hours
+
+Name: Advanced game graphics
+Descr: When a ball is disabled, don't draw it.  Make leading balls a different color from followers.
+Time: 20 minutes
+
+Name: Player logic
+Descr: Allow player to move up/down/left/right.  Let them fire "beams" which are tiny balls.  The player should be able to hold down the space bar to fire them and they should be spaced out so they aren't all fired continuously.  There should be a max number of beam balls on the screen at once.
+Time: 45 minutes
+
+Name: Beam-Ball Collision support
+Descr: When a beam intersects a ball, set the ball and the beam to disabled.  When they are disabled, don't draw them or check for collision with them.
+Time: 30 minutes
+
+Name: Player-Ball Collision support
+Descr: When a ball intersects the player (now a ball object too) the player should lose a life and respawn in the center of the screen.  There should be a respawn invulnerability timer that wears off over a few seconds so the player can't fire beams but can't be hurt by balls.  The player color should change over time to indicate the respawn.
+Time: 1:30 hours
+
+Name: Win-Lose conditions
+Descr: The player should start with 3 lives, displayed in the upper left of the screen.  When the player is hit by a ball, the player lives should be decremented by one.  When a player with 0 lives left gets hit he should lose. A game over screen should replace the playmat.  When the player shoots all of the balls he should win and a "you win!" screen should replace the playmat.
+Time: 1 hour
 
 
 ~~~~Minigame2 (pong) tasks~~~~
