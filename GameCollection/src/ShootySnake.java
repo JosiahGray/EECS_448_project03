@@ -1,8 +1,8 @@
-+/*
- +*	@author Paul McElroy
- +* Idea for extending TimerTask and using executeGameLoop as my run function
- +* gotten from Liia Butler.
- +*/
+/*
+*	@author Paul McElroy
+* Idea for extending TimerTask and using executeGameLoop as my run function
+* gotten from Liia Butler.
+*/
 import java.util.Timer;
 public class ShootySnake {
 	public ShootySnake()
