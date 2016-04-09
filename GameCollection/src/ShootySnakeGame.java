@@ -13,33 +13,106 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class ShootySnakeGame extends JFrame {
-
+  /**
+  * WIDTH is the preferred width of the window
+  */
   private static final int WIDTH = 640;
+  /**
+  * HEIGHT is the preferred height of the window
+  */
   private static final int HEIGHT = 480;
+  /**
+  * The intended frame rate
+  */
   private static final int FRAMES_PER_SECOND = 60;
+  /**
+  * The period of a frame
+  */
   private static final long FRAME_PERIOD = 1000000000L / FRAMES_PER_SECOND;
 
+  /**
+  * Will contain Boolean values returning true if the keys, whose Constant Field Values correspond to the index of this array, are pressed.
+  */
   private final boolean[] KEYS = new boolean[65535]; // pressed keys
-
-  private final int BALLS = 200; //Total number of Balls that must be defeated
-  private final int BEAMS = 100; //Max number of Beam balls on the screen at once
-  private final double BALL_SIZE = WIDTH / 20; //Diameter of the enemy balls
-  private final double BEAM_SIZE = BALL_SIZE/5; //Diameter of the Beam balls
-  private final double PLAYER_SIZE = BALL_SIZE; //Diameter of the player ball
-  private final double BALL_VELOCITY = 2; //How fast the balls move
-  private final double DIV = 10; //Controls tightness of chain. 1 is tightest.
-  private final int PLAYER_VELOCITY = 10; //How fast the player moves
+  /**
+  * The total number of enemy balls.
+  */
+  private final int BALLS = 200;
+  /**
+  * The maximum number of beams.
+  */
+  private final int BEAMS = 100;
+  /**
+  * Diameter of the enemy balls.
+  */
+  private final double BALL_SIZE = WIDTH / 20;
+  /**
+  * Diameter of the beam balls.
+  */
+  private final double BEAM_SIZE = BALL_SIZE/5;
+  /**
+  * Diameter of the player ball.
+  */
+  private final double PLAYER_SIZE = BALL_SIZE;
+  /**
+  * How fast the balls move.
+  */
+  private final double BALL_VELOCITY = 2;
+  /**
+  * Controls the tightness of the chain.  1 is the tightest. Higher is loose.
+  */
+  private final double DIV = 10;
+  /**
+  * How fast the player moves.
+  */
+  private final int PLAYER_VELOCITY = 10;
+  /**
+  * JPanel containing the Image image.
+  */
   private JPanel panel;
+  /**
+  * Image containing the game graphics.
+  */
   private Image image;
+  /**
+  * Contains the graphics of the game.
+  */
   private Graphics imageGraphics;
-  private Ball[] balls = new Ball[BALLS]; //The chain of total enemy balls
-  private Ball[] beams = new Ball[BEAMS]; //The chain of total Beam balls
-  private Ball player; //The player object
+  /**
+  * Ball array containing all the enemy balls.
+  */
+  private Ball[] balls = new Ball[BALLS];
+  /**
+  * Ball array containing all of the beam Ball objects.
+  */
+  private Ball[] beams = new Ball[BEAMS];
+  /**
+  * The player Ball object.
+  */
+  private Ball player;
+  /**
+  * Contains the last nano second (according to nanoTime()) that a beam was fired.
+  */
   private long lastShot;
+  /**
+  * The length of time the player should be invulnerable to harm and can't shoot beams after respawning.
+  */
   private final long spawnInvulnerabilityCounter = 4000000000L;
+  /**
+  * Contains the nano second (according to nanoTime()) since a player respawned.
+  */
   private long respawnStart;
+  /**
+  * The number of lives the player has left before they lose.  Getting struck by an enemy ball when the player has 0 will cause them to lose.
+  */
   private int lives;
+  /**
+  * The gameOver flag tells the game to stop updating the game model and to place the corresponding win/lose message in the window.
+  */
   private Boolean gameOver;
+  /**
+  * The playerWon flag, when gameOver is true, tells the game whether the player has won (true) or lost (false).
+  */
   private Boolean playerWon;
 
   public ShootySnakeGame() {

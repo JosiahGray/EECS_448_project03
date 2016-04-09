@@ -6,15 +6,23 @@
 import java.awt.Graphics;
 import java.util.TimerTask;
 public class ShootySnakeDriver extends TimerTask {
-	//constructor
+	 /**
+	 * ShootySnakeGame object that the user will interact with.
+	 */
 	ShootySnakeGame game;
-	Graphics panelGraphics;
-	long remaining;
-	long nextFrameStart;
+
+	//constructor
+	/**
+	* The ShootySnakeDriver constructor. Constructs a new driver instance, setting game to a new ShootySnakeGame object, which starts the game.
+	*/
 	public ShootySnakeDriver(){
 		game = new ShootySnakeGame();
 	}
-	//step function
+
+	//constructor
+	/**
+	* Defines the run method for ShootySnakeDriver, an extended TimerTask class. Run will run the ShootySnakeGame executeGameLoop using the Schedule functionality of the Timer class.
+	*/
 	public void run(){
 		game.executeGameLoop();
 	}

@@ -5,6 +5,10 @@
 */
 import java.util.Timer;
 public class ShootySnake {
+		//constructor
+		/**
+		* The ShootySnake constructor. Constructs a new ShootySnake instance which creates a Timer, and a ShootySnakeDriver is run through that Timer's schedule method
+		*/
 	public ShootySnake()
 	{
 		Timer myTimer = new Timer();
