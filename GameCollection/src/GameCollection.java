@@ -16,7 +16,9 @@ public class GameCollection {
 
 		createAndDisplayGUI();
 	}
-
+	/**
+	 * Creates and displays user interface, implements menu items for each game on a menu and a frame
+	 */
 	private static void createAndDisplayGUI()
 	{
 		//declare components
@@ -62,6 +64,10 @@ public class GameCollection {
 		frame.pack();
 		frame.setVisible(true);
 	}
+	/**
+	 * Waits for action to implement nim game
+	 * @return Action listener listener
+	 */
 
 	private static ActionListener nimListener()
 	{
@@ -83,7 +89,10 @@ public class GameCollection {
 
 		return listener;
 	}
-
+	/**
+	 * Waits for action to implement pong game
+	 * @return Action listener listener
+	 */
 	private static ActionListener pongListener()
 	{
 		ActionListener listener = new ActionListener()
@@ -97,6 +106,10 @@ public class GameCollection {
 
 		return listener;
 	}
+	/**
+	 * Waits for action to implement shooty snake game
+	 * @return Actionlistener listener
+	 */
 
 	private static ActionListener shootyListener()
 	{
