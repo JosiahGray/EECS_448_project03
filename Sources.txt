@@ -6,5 +6,5 @@
  
  http://stackoverflow.com/questions/8980185/how-to-reduce-lag-in-my-java-2d-platformer
  
- Architecture from Michael Birken's "gametemplate" example used to separate the game model from the Graphics, as well as how to obtain simultaineous keypresses in an extended JFrame:
+ Heavily borrowed from Michael Birken's "gametemplate" example: used his architecture to separate the game model from the Graphics and his method of separating out initilization steps into methods; extensively used the final keyword to define attributes permanently in the class defintion; also used his overloaded processKeyEvent to obtain simultaneous keypresses in an extended JFrame; his example also showed how to draw Graphics to an image and put that in the JFrame and also how to bounce circular objects inside of a box and how to move an object using keypresses (via the processKeyEvent method):
  http://meatfighter.com/gametemplate/
