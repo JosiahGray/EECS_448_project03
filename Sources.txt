@@ -1,1 +1,7 @@
+ Adding key listeners to pong:
  
+ https://docs.oracle.com/javase/tutorial/uiswing/events/keylistener.html
+ 
+ Reducing lag from graphics in java:
+ 
+ http://stackoverflow.com/questions/8980185/how-to-reduce-lag-in-my-java-2d-platformer
