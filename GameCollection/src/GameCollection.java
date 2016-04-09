@@ -2,6 +2,12 @@ import javax.swing.*;
 import java.awt.event.*;
 //import java.awt.Component;
 //import java.awt.GridLayout;
+/**
+ * Pong Sources: 
+ * @source //https://docs.oracle.com/javase/tutorial/uiswing/events/keylistener.html
+ * @source //http://stackoverflow.com/questions/8980185/how-to-reduce-lag-in-my-java-2d-platformer
+ *
+ */
 
 public class GameCollection {
 
