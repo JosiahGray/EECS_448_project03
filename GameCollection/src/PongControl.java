@@ -61,7 +61,8 @@ public class PongControl extends JFrame implements KeyListener{
 		createAndDisplayGUI();
 	}
 	/**
-	 * 
+	 * Lays out the content that will be shown for the pong game
+	 * @post shows new content for pong game
 	 */
 	public void createAndDisplayGUI(){
 		//this.getContentPane().add(display.getContent());
