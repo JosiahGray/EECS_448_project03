@@ -114,13 +114,20 @@ public class ShootySnakeGame extends JFrame {
   * The playerWon flag, when gameOver is true, tells the game whether the player has won (true) or lost (false).
   */
   private Boolean playerWon;
-
+  /**
+  * Constructor for ShootySnakeGame.  Will initialize the frame, image and game model.
+  * @post The game's frame, image and game model are initialized.
+  */
   public ShootySnakeGame() {
     initFrame();
     initImage();
     initModel();
   }
 
+  /**
+  * executeGameLoop performs one frame of game activity and then sleeps the rest of the allotted time.
+  * @post A frame of game activity has been performed and the model and graphics updated.
+  */
   public void executeGameLoop() {
     if(!gameOver) {
       long nextFrameStart = System.nanoTime();
@@ -139,6 +146,10 @@ public class ShootySnakeGame extends JFrame {
     }
   }
 
+  /**
+  * Updates the game model containing the enemy balls, player, beams and the win/lose state.
+  * @post The game model is updated for the current frame.
+  */
   private void updateModel() {
 
     // Move the balls
@@ -168,6 +179,10 @@ public class ShootySnakeGame extends JFrame {
     findCollisions();
   }
 
+  /**
+  * Obtains information produced by the updateModel method to produce an image of each frame's state of play.
+  * @post The graphics container is updated for the current frame.
+  */
   private void renderFrame() {
     imageGraphics.setColor(Color.BLACK);
     imageGraphics.fillRect(0, 0, WIDTH, HEIGHT);
@@ -234,6 +249,10 @@ public class ShootySnakeGame extends JFrame {
     }
   }
 
+  /**
+  * Initializes the JFrame with proper naming, setting Resizeable to false, setting the size to WIDTH and HEIGHT and putting the window in the center.
+  * @post The JFrame is initialized.
+  */
   private void initFrame() {
     setTitle("Shooty Snake");
     setResizable(false);
@@ -244,11 +263,19 @@ public class ShootySnakeGame extends JFrame {
     setVisible(true);
   }
 
+  /**
+  * Initializes the Image image which will house the graphics that will be drawn to the JFrame.
+  * @post The Image is initialized.
+  */
   private void initImage() {
     image = createImage(WIDTH, HEIGHT);
     imageGraphics = image.getGraphics();
   }
 
+  /**
+  * Initializes the game model.  All values are default.
+  * @post The game model is initialized.
+  */
   private void initModel() {
     // Set lives
     lives = 3;
@@ -272,11 +299,18 @@ public class ShootySnakeGame extends JFrame {
     }
   }
 
+  /**
+  * Overides JFrame's processKeyEvent so that it will keep track of key presses in the KEYS array.
+  * @post A Boolean value has been assigned at a key's index in the KEYS array indicating if it has been pressed.
+  */
   public void processKeyEvent(KeyEvent e) {
     KEYS[e.getKeyCode()] = e.getID() == 401;
   }
 
-
+  /**
+  * Moves the balls in the balls array according to their position, velocity and disabled status of their leading members.
+  * @post The balls array's Ball objects have updated positions and velocities.
+  */
   private void moveBalls()
   {
     for(int i = 0; i < BALLS; i++)
@@ -316,6 +350,10 @@ public class ShootySnakeGame extends JFrame {
     }
   }
 
+  /**
+  * Checks for the victory condition that all enemy balls have been hit with beams so that they are all disabled.
+  * @post  If all balls are disabled, the player wins, else nothing.
+  */
   private void checkBalls()
   {
     int count = 0;
@@ -330,6 +368,14 @@ public class ShootySnakeGame extends JFrame {
     }
   }
 
+  /**
+  * Removes the oldest beam object from the end of the array and adding a newly created beam object to its beginning.
+  * @param  x The x coordinate of the new beam object.
+  * @param  y The t coordinate of the new beam object.
+  * @param  vx The horizontal component of velocity of the new beam object.
+  * @param  vy The vertical component of velocity of the new beam object.
+  * @post A new Beam is added to the front and an old Beam is removed from the back of the beams array.
+  */
   private void addBeam(double x, double y, double vx, double vy) {
     for(int i = 0; i < BEAMS-1; i++){
       beams[i] = beams[i+1];
@@ -337,6 +383,10 @@ public class ShootySnakeGame extends JFrame {
     beams[BEAMS-1] = new Ball(x,y,vx,vy);
   }
 
+  /**
+  * Moves the beams along their trajectory, given their velocity and position.
+  * @post Beam locations are updated.
+  */
   private void moveBeams()
   {
     for(int i = 0; i < BEAMS; i++)
@@ -347,12 +397,20 @@ public class ShootySnakeGame extends JFrame {
     }
   }
 
+  /**
+  * Call functions to check for collisions and take appropriate actions amongst the actors.
+  * @post Runs ballHitsPlayer and beamHitsBall.
+  */
   private void findCollisions()
   {
       ballHitsPlayer();
       beamHitsBall();
   }
 
+  /**
+  * Checks if any enabled balls in the balls array have hit the player this frame.
+  * @post If the player is hit, they are respawned or lose, else nothing happens.
+  */
   private void ballHitsPlayer()
   {
     if(System.nanoTime() - respawnStart > spawnInvulnerabilityCounter)
@@ -368,6 +426,10 @@ public class ShootySnakeGame extends JFrame {
       }
   }
 
+  /**
+  * Checks if any enabled balls in the balls array have hit any enabled beams in the beams array.
+  * @post Any hit balls are disabled.
+  */
   private void beamHitsBall()
   {
     for(int i = 0; i < BEAMS; i++)
@@ -383,11 +445,23 @@ public class ShootySnakeGame extends JFrame {
     }
   }
 
+  /**
+  * Checks for intersection between two circles.
+  * @param b1 The first Ball object to check.
+  * @param b2 The second Ball object to check.
+  * @param size1 The radius of the first Ball object.
+  * @param size2 The radius of the second Ball object.
+  * @return True if the Ball objects are intersecting, False otherwise.
+  */
   private Boolean circlesIntersect(Ball b1, Ball b2, double size1, double size2)
   {
     return java.awt.geom.Point2D.distance(b1.x + size1, b1.y + size1, b2.x + size2, b2.y + size2) < size1 + size2;
   }
 
+  /**
+  * Respawns the player in the center of the screen with a cooldown period until they can be hit again and before they can fire again.
+  * @post Number of lives reduced by 1, the beams array is reset to default.  The player is placed in the center of the screen and the timer for respawn invulnerability is set.
+  */
   private void respawn()
   {
     lives--;
@@ -402,12 +476,20 @@ public class ShootySnakeGame extends JFrame {
     player.y = HEIGHT/2;
   }
 
+  /**
+  * Sets the flags indicating end game lose.
+  * @post The game ends and the lose screen is brought up.
+  */
   private void lose()
   {
     gameOver = true;
     playerWon = false;
   }
 
+  /**
+  * Sets the flags indicating end game victory.
+  * @post The game ends and the victory screen is brought up.
+  */
   private void win()
   {
     gameOver = true;
@@ -416,13 +498,34 @@ public class ShootySnakeGame extends JFrame {
 }
 
 class Ball {
+  /**
+  * The x coordinate of a Ball object.
+  */
   public double x;
+  /**
+  * The y coordinate of a Ball object.
+  */
   public double y;
+  /**
+  * The horizontal component of velocity of a Ball object.
+  */
   public double vx;
+  /**
+  * The vertical component of velocity of a Ball object.
+  */
   public double vy;
+  /**
+  * The disabled state of a Ball object.
+  */
   public Boolean disabled;
-  public double radius;
 
+  /**
+  * Constructor for a Ball object.
+  * @param mx The x coordinate for the new ball object.
+  * @param my The y coordinate for the new ball object.
+  * @param mvx The horizontal component of velocity for the new ball object.
+  * @param mvy The vertical component of velocity for the new ball object.
+  */
   public Ball(double mx, double my, double mvx, double mvy) {
     x = mx;
     y = my;
