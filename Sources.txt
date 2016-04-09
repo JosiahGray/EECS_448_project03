@@ -5,3 +5,6 @@
  Reducing lag from graphics in java:
  
  http://stackoverflow.com/questions/8980185/how-to-reduce-lag-in-my-java-2d-platformer
+ 
+ Architecture from Michael Birken's "gametemplate" example used to separate the game model from the Graphics, as well as how to obtain simultaineous keypresses in an extended JFrame:
+ http://meatfighter.com/gametemplate/
