@@ -5,3 +5,13 @@
  Reducing lag from graphics in java:
  
  http://stackoverflow.com/questions/8980185/how-to-reduce-lag-in-my-java-2d-platformer
+ 
+ Heavily borrowed from Michael Birken's "gametemplate" example for ShootySnake:
+    -used his architecture to separate the game model from the Graphics
+    -his method of separating out initilization steps into methods
+    -extensively used the final keyword to define attributes permanently in the class definition
+    -his overloaded processKeyEvent to obtain simultaneous keypresses in an extended JFrame
+    -his example also demonstrated how to draw Graphics to an image and put that in the JFrame and also how to bounce circular objects inside of a box and how to move an object using keypresses (via the processKeyEvent method)
+    -probably most importantly- my original reason for looking at this example, is that it showed a looping method (executeGameLoop) that kept the game model up to date without running the Graphics side of things every frame.
+ 
+ http://meatfighter.com/gametemplate/
